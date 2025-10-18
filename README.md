@@ -22,7 +22,7 @@ To design and deliver a **monthly-level interactive dashboard** that visualizes 
 **Columns Included:**
 Month | Region | Product/Service | Revenue | COGS | Gross Profit | Opex | EBITDA | Cash Inflows | Cash Outflows | Receivables Aging (Days) | Payables Aging (Days) | Revenue Budget | Budget Variance %
 
-## ⚙️ DAX Measures Used
+## DAX Measures Used
 - **Total Revenue:** `SUM(Data[Revenue])`
 - **Total COGS:** `SUM(Data[COGS])`
 - **Gross Profit:** `SUM(Data[Gross Profit])`
@@ -32,7 +32,7 @@ Month | Region | Product/Service | Revenue | COGS | Gross Profit | Opex | EBITDA
 - **Revenue YTD:** `TOTALYTD([Revenue], 'Data'[Month])`
 - **Revenue MoM %:** `( [Current Month Revenue] - [Previous Month Revenue] ) / [Previous Month Revenue]`
 
-## 📈 Dashboard Features
+## Dashboard Features
 ### KPI Cards
 - Revenue  
 - Net Cash  
