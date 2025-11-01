@@ -1,88 +1,75 @@
 # Financial Performance Dashboard
 
-## Project Overview
-This project presents an interactive **Financial Performance Dashboard** built in **Power BI** for monitoring the company’s financial health on a monthly basis.  
-The dashboard provides insights into revenue, profitability, cash flow, and working capital efficiency, enabling management to make data-driven decisions.
+### Project Overview
+The **Financial Performance Dashboard** provides a comprehensive analysis of a company’s financial health by tracking revenue growth, profitability, cash flow, and working capital efficiency.  
+It enables stakeholders to monitor monthly trends, compare performance against budgets, and evaluate product/service profitability across different regions and timeframes.
 
-## Objective
-To design and deliver a **monthly-level interactive dashboard** that visualizes the company's key financial KPIs, including Revenue, Gross Margin %, EBITDA %, and Net Cash, with the ability to filter by date, region, and product/service.
+### Tools Used
+- **Power BI** – Dashboard design, KPI calculation, and visualization  
+- **Excel** – Data cleaning, transformation, and modeling  
+- **DAX** – Custom measures for financial KPIs  
+- **Power Query** – Data loading and shaping  
+
+### 🎯 Objective
+To analyze and visualize the company’s **financial performance** over time, focusing on:
+- Revenue growth trends  
+- Gross profit and EBITDA margins  
+- Budget vs actual performance  
+- Cash flow movement  
+- Product/service-wise revenue distribution  
+- Receivables efficiency  
+
+### Key KPIs
+| KPI | Description |
+|-----|--------------|
+| **Total Revenue (23.6M)** | Overall revenue generated across all products/services |
+| **Net Cash (0.69M)** | Liquidity status after inflows and outflows |
+| **Gross Margin % (45.55%)** | Profitability before operational expenses |
+| **EBITDA % (24.81%)** | Operational efficiency indicator |
+| **Revenue YTD (11.8M)** | Cumulative year-to-date revenue |
+| **Revenue MoM (4.18%)** | Month-over-month revenue growth |
+
+### Dashboard Components
+| Chart Title | Type | Purpose |
+|--------------|------|----------|
+| **Revenue & Profit Trend Over Time** | Line Chart | Shows year-over-year revenue and profit trends |
+| **Revenue vs Budget and Variance % by Month** | Clustered Column | Highlights monthly performance against budget |
+| **Monthly Movement of Net Cash** | Waterfall Chart | Displays inflows and outflows contributing to net cash |
+| **Revenue by Product/Service** | Horizontal Bar Chart | Identifies top-performing products and services |
+| **Average Receivables Aging by Month** | Bar Chart | Tracks receivables collection efficiency across months |
+
+### Key Insights
+- **Revenue Growth:** Steady month-over-month increase with December peaking due to strong product demand.  
+- **Profitability:** Gross Margin (45.55%) indicates efficient cost control; EBITDA Margin (24.81%) shows room for operational optimization.  
+- **Cash Flow:** Consistent increase in net cash indicates healthy liquidity and disciplined expense management.  
+- **Product Performance:** Product C and Service X are top performers; Product A and Service Y show potential for growth.  
+- **Working Capital:** Receivables collected within 26–31 days, reflecting efficient cash management.  
+
+### Recommendations
+1. Optimize operational costs to improve EBITDA margins.  
+2. Reinvest surplus cash into high-performing products and regions.  
+3. Focus on cost control for underperforming services.  
+4. Continue maintaining a 30-day receivables cycle for liquidity stability.  
+
+### DAX Measures Used
+`DAX
+Total Revenue = SUM(Data[Revenue])
+Net Cash = SUM(Data[Net Cash])
+Gross Margin % = DIVIDE(SUM(Data[Gross Profit]), SUM(Data[Revenue])) * 100
+EBITDA % = DIVIDE(SUM(Data[EBITDA]), SUM(Data[Revenue])) * 100
+Revenue YTD = TOTALYTD(SUM(Data[Revenue]), Data[Date])
+Revenue MoM % = 
+VAR CurrentMonth = CALCULATE(SUM(Data[Revenue]), Data[Month] = MAX(Data[Month]))
+VAR PrevMonth = CALCULATE(SUM(Data[Revenue]), Data[Month] = MAX(Data[Month]) - 1)
+RETURN DIVIDE(CurrentMonth - PrevMonth, PrevMonth, 0)
 
 
-## Key Insights
-- **Revenue Growth:** Consistent month-over-month increase, peaking in December.  
-- **Profitability:** Gross Margin at **45.55%**, EBITDA Margin at **24.81%**, indicating strong cost control.  
-- **Cash Flow:** Net Cash position steadily improves each month, reflecting efficient cash management.  
-- **Regional Performance:** The **South region** leads slightly, while **East** shows scope for improvement.  
-- **Receivables Aging:** Averages around **30 days**, aligned with standard credit terms.  
-- **Payables Aging:** Appears unusually high and requires data validation.  
-- **Budget Alignment:** Actual revenue closely matches budget targets, with small positive variances in key months.
+### Project Structure
+Financial_Performance_Dashboard
+│
+├── Financial_Performance_Dashboard.pbix
+├── Financial Dashboard Insights Report.docx
+└── Financial Dashboard.pdf
 
-## Dataset Information
-**Dataset Name:** `Data`  
-**Columns Included:**
-Month | Region | Product/Service | Revenue | COGS | Gross Profit | Opex | EBITDA | Cash Inflows | Cash Outflows | Receivables Aging (Days) | Payables Aging (Days) | Revenue Budget | Budget Variance %
-
-## DAX Measures Used
-- **Total Revenue:** `SUM(Data[Revenue])`
-- **Total COGS:** `SUM(Data[COGS])`
-- **Gross Profit:** `SUM(Data[Gross Profit])`
-- **Gross Margin %:** `DIVIDE([Gross Profit], [Revenue])`
-- **EBITDA %:** `DIVIDE([EBITDA], [Revenue])`
-- **Net Cash:** `SUM(Data[Cash Inflows]) - SUM(Data[Cash Outflows])`
-- **Revenue YTD:** `TOTALYTD([Revenue], 'Data'[Month])`
-- **Revenue MoM %:** `( [Current Month Revenue] - [Previous Month Revenue] ) / [Previous Month Revenue]`
-
-## Dashboard Features
-### KPI Cards
-- Revenue  
-- Net Cash  
-- Gross Margin %  
-- EBITDA %  
-- Revenue YTD  
-- Revenue MoM %
-
-### Visuals Included
-1. **Revenue and Gross Profit by Month** – Combo chart showing monthly trend.  
-2. **Revenue by Product/Service** – Horizontal bar chart highlighting top-performing offerings.  
-3. **Revenue vs Budget and Variance %** – Budget comparison by month.  
-4. **Net Cash Movement** – Waterfall chart showing monthly inflow and outflow impact.  
-5. **Revenue by Region** – Donut chart showing regional contribution.  
-6. **Average Receivables Aging by Month** – Horizontal bar chart.  
-7. **Total Payables Aging by Month** – Horizontal bar chart.
-
-### Interactivity
-- Filters for **Region**, **Product/Service**, and **Date Range**
-- Drill-down capability from month to product/service level
-- Dynamic KPI cards responding to slicer selections
-
-## Design Theme
-- **Layout:**  
-  - Top section: KPI summary  
-  - Middle section: Revenue and Profit analysis  
-  - Bottom section: Cash Flow and Working Capital insights  
-
-## Data Cleaning & Preparation
-- Validated numerical consistency across revenue, cost, and cash columns.  
-- Checked for missing or inconsistent entries in aging data.  
-- Ensured all months are properly ordered for trend analysis.  
-- Adjusted incorrect budget variance calculations.
-
-## Outcome
-The dashboard enables financial stakeholders to:
-- Monitor monthly and year-to-date performance.  
-- Track budget adherence and variance.  
-- Assess profitability across products and regions.  
-- Evaluate liquidity and working capital efficiency.  
-
-## Deliverables
-- **Power BI File:** `Financial_Performance_Dashboard.pbix`  
-- **Insights Report:** `Financial_Insights_Report.pdf`  
-- **README File:** (this document)
-
-## Tools Used
-- **Power BI** – Data visualization and dashboard design  
-- **Excel** – Data cleaning and preparation  
-- **DAX** – Calculations for KPIs and metrics  
-
-## Author
-**Lopita Mishra**  
+### Conclusion
+The dashboard provides a clear, data-driven view of the company’s financial status — empowering decision-makers to track performance, optimize costs, and plan for sustainable growth. It effectively visualizes financial KPIs and delivers actionable insights into profitability, liquidity, and operational efficiency.
