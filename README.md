@@ -10,7 +10,7 @@ It enables stakeholders to monitor monthly trends, compare performance against b
 - **DAX** – Custom measures for financial KPIs  
 - **Power Query** – Data loading and shaping  
 
-### 🎯 Objective
+### Objective
 To analyze and visualize the company’s **financial performance** over time, focusing on:
 - Revenue growth trends  
 - Gross profit and EBITDA margins  
