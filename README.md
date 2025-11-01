@@ -63,13 +63,5 @@ VAR CurrentMonth = CALCULATE(SUM(Data[Revenue]), Data[Month] = MAX(Data[Month]))
 VAR PrevMonth = CALCULATE(SUM(Data[Revenue]), Data[Month] = MAX(Data[Month]) - 1)
 RETURN DIVIDE(CurrentMonth - PrevMonth, PrevMonth, 0)
 
-
-### Project Structure
-Financial_Performance_Dashboard
-│
-├── Financial_Performance_Dashboard.pbix
-├── Financial Dashboard Insights Report.docx
-└── Financial Dashboard.pdf
-
 ### Conclusion
 The dashboard provides a clear, data-driven view of the company’s financial status — empowering decision-makers to track performance, optimize costs, and plan for sustainable growth. It effectively visualizes financial KPIs and delivers actionable insights into profitability, liquidity, and operational efficiency.
